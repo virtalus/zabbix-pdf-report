@@ -1,6 +1,6 @@
 # Zabbix PDF Report
 
-Name all graph titles or item names you would like to generate graph for. Define the scope of host or host group. Select time period like last hour, last day, last week. Generate PDF. Events also can be included in the report.
+Name all graph titles or item names you would like to generate a graph for. Define the scope of a host or host group. Select time period like last hour, last day, last week. Generate PDF. Events also can be included in the report.
 
 ## Installation
 
