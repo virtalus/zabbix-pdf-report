@@ -1,6 +1,6 @@
 # Zabbix PDF Report
 
-Zabbix PDF Report allows to extract graphs by pointing the scope of graph or item names.
+Name all graph titles or item names you would like to see. Define the scope of host or host group. Select time period like last hour, last day, last week. Generate PDF. Events also can be included in the report.
 
 ## Installation
 
@@ -58,7 +58,7 @@ Do not ask for user to log in
 ```
 sed -i "s|\$user_login=1;|\$user_login=0;|" /usr/share/zabbix-pdf-report/config.inc.php
 ```
-Set the right credentials
+If you are using different credentials than user: Admin, password: zabbix, then set the right credentials
 ```
 vi /usr/share/zabbix-pdf-report/config.inc.php
 ```
