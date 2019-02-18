@@ -1,5 +1,9 @@
 # Zabbix PDF Report
 
+Zabbix PDF Report allows to extract graphs by pointing the scope of graph or item names.
+
+## Installation
+
 This instruction assumes you are using default zabbix installation which points on http://127.0.0.1/zabbix/
 
 The following solution uses zabbix API which are located at http://127.0.0.1/zabbix/api_jsonrpc.php
