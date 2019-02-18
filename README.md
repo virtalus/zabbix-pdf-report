@@ -1,19 +1,51 @@
-zabbix-dynamic-report-generation
-================================
-Please run ./fixrights.sh after you have checked out this repo. By default, reports and tmp folders will not exist and need to be created.
-They also need to be writable by the webserver. At present they are writable by everyone. Patches welcome.
+# Zabbix dynamic report generation
 
-If in doubt: mkdir tmp reports; chmod 777 tmp reports
+This instruction assumes you are using default zabbix installation which points on http://127.0.0.1/zabbix/
+The following solution uses zabbix API which are located at http://127.0.0.1/zabbix/api_jsonrpc.php
+After you complete the installation steps you we be able to access reporting tool on http://127.0.0.1/zbxreport/
 
-New User
-========
-Copy config.inc.php.dist to config.inc.php and edit it to fit your environment. It should be fairly well documented internally.
+Prepare git utility on RHEL/CentOS family
+```
+yum -y install git
+```
 
-Existing User
-=============
-Check the changes in config.inc.php.dist, if any, against your local copy and port them over, or make your changes again like the New User section.
+Prepare git utility on Debian/Ubuntu family
+```
+apt -y install git
+```
 
-Remember to adjust config.inc.php to match your company, server and location. The dist file has dummy values that will not work on its own.
+Install project
+```
+cd /usr/share
+git clone https://github.com/catonrug/zabbix-pdf-report.git
+```
 
-Follow the discussion here:
+Prepare access
+```
+cd /usr/share/zabbix-pdf-report
+cp config.inc.php.dist config.inc.php
+```
+
+Create working dir
+```
+cd /usr/share/zabbix-pdf-report
+./fixrights.sh
+```
+
+Install httpd directive
+```
+cp /usr/share/zabbix-pdf-report/zabbix-pdf-report.conf /etc/httpd/conf.d
+```
+
+Restart httpd
+```
+systemctl restart httpd
+```
+
+Make sure SELinux is off
+```
+setenforce 0
+```
+
+# Related
 https://www.zabbix.com/forum/showthread.php?t=24998
