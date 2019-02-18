@@ -50,7 +50,7 @@ setenforce 0
 ```
 
 ## To create link without authorization
-Do not as for user to log in
+Do not ask for user to log in
 ```
 sed -i "s|\$user_login=1;|\$user_login=0;|" /usr/share/zabbix-pdf-report/config.inc.php
 ```
