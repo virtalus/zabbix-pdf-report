@@ -1,7 +1,9 @@
-# Zabbix dynamic report generation
+# Zabbix PDF Report
 
 This instruction assumes you are using default zabbix installation which points on http://127.0.0.1/zabbix/
+
 The following solution uses zabbix API which are located at http://127.0.0.1/zabbix/api_jsonrpc.php
+
 After you complete the installation steps you we be able to access reporting tool on http://127.0.0.1/zbxreport/
 
 Prepare git utility on RHEL/CentOS family
@@ -46,6 +48,10 @@ Make sure SELinux is off
 ```
 setenforce 0
 ```
+
+## To create link without authorization
+
+http://127.0.0.1/zbxreport/chooser.php
 
 # Related
 https://www.zabbix.com/forum/showthread.php?t=24998
