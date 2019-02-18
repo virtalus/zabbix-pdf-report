@@ -50,8 +50,11 @@ setenforce 0
 ```
 
 ## To create link without authorization
+Do not as for user to log in
+```
+sed -i "s|\$user_login=1;|\$user_login=0;|" /usr/share/zabbix-pdf-report/config.inc.php
+```
+Use url http://127.0.0.1/zbxreport/chooser.php
 
-http://127.0.0.1/zbxreport/chooser.php
-
-# Related
+## Related
 https://www.zabbix.com/forum/showthread.php?t=24998
