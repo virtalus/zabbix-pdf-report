@@ -6,11 +6,11 @@ I'm not the author of code. Just providing a nice instruction how to install the
 
 ## Installation
 
-This instruction assumes you are using default zabbix installation which points on http://127.0.0.1/zabbix/
+This instruction assumes you are using default zabbix installation which points on http://192.168.56.100/zabbix/
 
-The following solution uses zabbix API which are located at http://127.0.0.1/zabbix/api_jsonrpc.php
+The following solution uses zabbix API which are located at http://192.168.56.100/zabbix/api_jsonrpc.php
 
-After you complete the installation steps you we be able to access reporting tool on http://127.0.0.1/zbxreport/
+After you complete the installation steps you we be able to access reporting tool on http://192.168.56.100/zbxreport/
 
 Prepare git utility on RHEL/CentOS family
 ```
@@ -65,7 +65,7 @@ If you are using different credentials than user: Admin, password: zabbix, then 
 vi /usr/share/zabbix-pdf-report/config.inc.php
 ```
 
-Use url http://127.0.0.1/zbxreport/chooser.php
+Use url http://192.168.56.100/zbxreport/chooser.php
 
 ## Related
 https://www.zabbix.com/forum/showthread.php?t=24998
