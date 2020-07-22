@@ -16,10 +16,10 @@
 
 .zabbix_logo
 {
-	background: #FFFFFF url('../images/general/zabbix.png') no-repeat;
-	cursor: pointer;
-	height: 31px;
-	width: 118px;
+	background: #FFFFFF url('../images/general/logo_bento_orange_2.png') no-repeat;
+	/* cursor: pointer; */
+	height: 200px;
+	width: 300px;
 }
 .block
 {
