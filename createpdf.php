@@ -195,7 +195,7 @@ if (!file_exists($tmp_pdf_data)) {
 	exit;
 }
 
-$pdf_filename	= "$reportname.pdf";
+$pdf_filename	= "Cluster_Report.pdf";
 
 //$pdf = new Cezpdf('a4','portrait');
 $pdf = new Creport("$paper_format","$paper_orientation");
