@@ -377,7 +377,7 @@ function CreatePDF($hostarray) {
 				fwrite($fh,"#NP\n");
 			}
 
-			$stringData = "1<Graphs for ".$hostname.">\n\n";
+			$stringData = "1<Cluster Report>\n\n";
 			fwrite($fh, $stringData);
 	/*		fclose($fh); */
 			#$hostGraphs = ZabbixAPI::fetch_array('graph','get',array('output'=>'extend','hostids'=>$hostid))
@@ -403,17 +403,17 @@ function CreatePDF($hostarray) {
 					$image_file = $z_tmpimg_path ."/".$trimmed_hostname ."_" .$graphid .".png";
 //					if ($debug) { echo "$graphname(id:$graphid)</br>\n"; }
 					$fh = fopen($tmp_pdf_data, 'a') or die("Can't open $tmp_pdf_data for writing!");
-					$stringData = "2<$graphname>\n";
+					$stringData = "\n2<$graphname>\n";
 					fwrite($fh, $stringData);
-					$stringData = "[" .$image_file ."]\n";
+					$stringData = "[" .$image_file ."]";
 					fwrite($fh, $stringData);
-					GetGraphImageById($graphid,$stime,$timeperiod,'750','150',$image_file);
-					$count+=1;
-		/*			fclose($fh); */
+					GetGraphImageById($graphid,$stime,$timeperiod,'580','140',$image_file);
+					$count+=4;
+					fclose($fh);
 				} else {
 					if (($debug) and ($mygraphs!="")) { echo "$graphname (id:$graphid) did not match the expression - skipping it.<BR/>\n"; }
 				}
-				if ( $count == 3 ) {
+				if ( $count == 2 ) {
 					fwrite($fh, "#NP\n");
 					$count = 0;
 				}
