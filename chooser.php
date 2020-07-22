@@ -44,7 +44,7 @@ header( 'Content-type: text/html; charset=utf-8' );
 <html>
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-	<title>Zabbix Dynamic PDF Report</title>
+	<title>HyperCX PDF Report</title>
 	<meta charset="utf-8" />
 	<link rel="shortcut icon" href="/zabbix/images/general/zabbix.ico" />
 	<link rel="stylesheet" type="text/css" href="css/zabbix.default.css" />
@@ -119,7 +119,7 @@ header( 'Content-type: text/html; charset=utf-8' );
 </head>
 <body class="originalblue">
 <div id="message-global-wrap"><div id="message-global"></div></div>
-<table class="maxwidth page_header" cellspacing="0" cellpadding="5"><tr><td class="page_header_l"><a class="image" href="http://www.zabbix.com/" target="_blank"><div class="zabbix_logo">&nbsp;</div></a></td><td class="maxwidth page_header_r">&nbsp;</td></tr></table>
+<!-- table class="maxwidth page_header" cellspacing="0" cellpadding="5"><tr><td class="page_header_l"><a class="image" href="http://www.zabbix.com/" target="_blank"><div class="zabbix_logo">&nbsp;</div></a></td><td class="maxwidth page_header_r">&nbsp;</td></tr></table --!>
 <br/><br/>
 <center><h1>Generate PDF Report</h1></center>
 <br/>
@@ -147,9 +147,9 @@ ZabbixAPI::logout($z_server,$z_user,$z_pass)
 ?>
 <center>
 <form class="cmxform" id="ReportForm" name="ReportForm" action='createpdf.php' method='GET'>
-<table border="1" rules="NONE" frame="BOX" width="600" cellpadding="10">
+<table border="1" rules="NONE" frame="BOX" width="700" cellpadding="10">
 <tr><td valign="middle" align="left" width="115">
-<label for="ReportType"><b>Report type</b></label>
+<label for="ReportType"><b>Report Type</b></label>
 </td><td valign="center" align="left" height="30">
 <p>
 <input id="ReportHost" type="radio" name="ReportType" value="host" title="Generate report on HOST" checked="checked" />Host
@@ -180,14 +180,14 @@ ReadArray($host_groups);
 </p>
 <p>
 <input type="checkbox" name="GraphsOn" value="yes" checked> Include graphs</input> &nbsp;
-<input type="checkbox" name="ItemGraphsOn" value="yes"> Include graphed items</input> &nbsp;
+<!--input type="checkbox" name="ItemGraphsOn" value="yes"> Include graphed items</input> &nbsp;
 <input type="checkbox" name="TriggersOn" value="yes"> Show triggers</input><BR/>
 <input type="checkbox" name="ItemsOn" value="yes"> Show configured items status</input> &nbsp;
-<input type="checkbox" name="TrendsOn" value="yes"> Show configured trends (SLA-ish)</input>
+<input type="checkbox" name="TrendsOn" value="yes"> Show configured trends (SLA-ish)</input --!>
 </p>
 <p>
-<input type="string" name="mygraphs2" style="font-size: 10px;"  size=80 value="<?php echo $mygraphs; ?>"> &uarr; Graphs to show (#.*# = all):</input>
-<input type="string" name="myitems2" style="font-size: 10px;"  size=80 value="<?php echo $myitemgraphs; ?>"> &uarr; Items to graph (#.*# = all):</input>
+<!-- input type="string" name="mygraphs2" style="font-size: 10px;"  size=80 value="<?php echo $mygraphs; ?>"> &uarr; Graphs to show (#.*# = all):</input>
+<input type="string" name="myitems2" style="font-size: 10px;"  size=80 value="<?php echo $myitemgraphs; ?>"> &uarr; Items to graph (#.*# = all):</input --!>
 </p>
 </td><td valign="middle">
 &nbsp;
@@ -197,7 +197,7 @@ ReadArray($host_groups);
 </td><td valign="middle" align="left">
 <p>
 <input id="RangeLast" type="radio" name="ReportRange" value="last" title="Report on last activity" checked="checked" />Last
-<input id="RangeCustom" type="radio" name="ReportRange" value="custom" title="Report using custom report range" />Custom
+<!-- input id="RangeCustom" type="radio" name="ReportRange" value="custom" title="Report using custom report range" />Custom --!>
 
 </p>
 </td><td valign="middle">
@@ -215,20 +215,17 @@ ReadArray($host_groups);
 <option value="Year">Year</option>
 </select>
 </p>
-<p id="p_RangeCustom">
+<!-- p id="p_RangeCustom">
 &nbsp;<b>Start:</b><input name="startdate" id="datepicker_start" type="date" size="8" />at<input name="starttime" id="timepicker_start" type="time" size="5" />
 <b>End:</b><input name="enddate" id="datepicker_end" type="date" size="8" />at<input name="endtime" id="timepicker_end" type="time" size="5" />
-</p>
+</p --!>
 </td><td valign="bottom" align="middle">
 <input type='submit' value='Generate'>
-<span class="smalltext"><input type='checkbox' name='debug'>Debug</span>
-<p><center>Version: <?php echo($version); ?></center></p>
+<!-- span class="smalltext"><input type='checkbox' name='debug'>Debug</span --!>
 </td></tr>
 </table>
 </form>
 <br/>
-<h2 id="h_OldReports">Old reports<br>
-(click to show)</h2>
 </center>
 
 <div class="d_OldReports table-hidden">
