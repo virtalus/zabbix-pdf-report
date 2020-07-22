@@ -120,7 +120,7 @@ class ZabbixAPI {
         // Initialize instance if it isn't already
         self::__init();
         if ($value === TRUE)
-            self::$instance->debug = true;
+            self::$instance->debug = false;
         else
             self::$instance->debug = false;
     }
