@@ -3,9 +3,9 @@
 
 # zabbix server info(user must have API access)
 $z_server       = 'http://127.0.0.1/zabbix/';
-$user_login=1; // 1 will ask for credentials. 0 will use credentials below:
+$user_login=0; // 1 will ask for credentials. 0 will use credentials below:
 $z_user         = 'Admin';
-$z_pass         = 'zabbix';
+$z_pass         = 'HypCXprod@987';
 
 //$user_login=0; // If $user_login is 0, use credentials below and don't prompt for login.
 $allow_localhost=1; // If a request is made from 127.0.0.1, use credentials below in createpdf.php
@@ -23,7 +23,7 @@ $showdates = false; // Prepend date and time on items and trends, or leave it ou
 
 // Would you like to limit what graphs are displayed? Enter partial matches (or complete names) here.
 // $mygraphs = '#.*#'; // Match all graphs
-$mygraphs = '#(Ping|CPU load|CPU usage|CPU util|processor|Disk space|Swap|Ethernet|Memory usage|^Traffic on |traffic on eth)#';
+$mygraphs = '#(Cluster_CPU|Cluster_RAM|VM|Images|Space usage on datastore system_kvm|Space usage on datastore system_lxd)#';
 $myitemgraphs = '#(Utilization of|farm connection|Average Latency|Number of processes|Cache % Hit)#';
 
 # Temporary directory for storing pdf data and graphs - must exist
@@ -37,11 +37,11 @@ $pdf_report_url	= "./reports";
 $paper_format	= 'A4'; // formats supported: 4A0, 2A0, A0 -> A10, B0 -> B10, C0 -> C10, RA0 -> RA4, SRA0 -> SRA4, LETTER, LEGAL, EXECUTIVE, FOLIO
 $paper_orientation = 'portrait'; // formats supported: portrait / landscape
 # time zone - see http://php.net/manual/en/timezones.php
-$timezone	= 'Europe/Oslo';
+$timezone	= 'America/Los_Angeles';
 # Logo used in PDF - may be empty
 # TODO: Specify image size!
-$pdf_logo	= './images/general/zabbix.png';
-$company_name   = 'YourCompany Name';
+$pdf_logo	= './images/general/logo_bento_orange_2.png';
+$company_name   = 'Virtalus';
 
 //DO NOT CHANGE BELOW THIS LINE
 $z_tmp_cookies 	= "/tmp/";
