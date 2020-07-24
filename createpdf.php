@@ -381,6 +381,19 @@ fclose($fh);
 array_map('unlink', glob("$z_tmpimg_path/*"));
 rmdir("$z_tmpimg_path");
 
-if ($debug) { echo "Report ready - available as: <A HREF=\"$pdf_report_url/$pdf_filename\">$pdf_report_url/$pdf_filename</A></br>\n"; }
-else { header("Location: $pdf_report_url/$pdf_filename"); }
+//if ($debug) { echo "Report ready - available as: <A HREF=\"$pdf_report_url/$pdf_filename\">$pdf_report_url/$pdf_filename</A></br>\n"; }
+//else { header("Location: $pdf_report_url/$pdf_filename"); }
+$fichero = 'reports/Cluster_Report.pdf';
+
+if (file_exists($fichero)) {
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename="'.basename($fichero).'"');
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate');
+    header('Pragma: public');
+    header('Content-Length: ' . filesize($fichero));
+    readfile($fichero);
+    exit;
+}
 ?>
