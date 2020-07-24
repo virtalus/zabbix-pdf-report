@@ -119,7 +119,6 @@ header( 'Content-type: text/html; charset=utf-8' );
 </head>
 <body class="originalblue">
 <div id="message-global-wrap"><div id="message-global"></div></div>
-<!-- table class="maxwidth page_header" cellspacing="0" cellpadding="5"><tr><td class="page_header_l"><a class="image" href="http://www.zabbix.com/" target="_blank"><div class="zabbix_logo">&nbsp;</div></a></td><td class="maxwidth page_header_r">&nbsp;</td></tr></table --!>
 <br/><br/>
 <center><h1>Generate PDF Report</h1></center>
 <br/>
@@ -135,6 +134,8 @@ ZabbixAPI::login($z_server,$z_user,$z_pass)
 //fetch graph data host
 $hosts       = ZabbixAPI::fetch_array('host','get',array('output'=>array('hostid','name'),'sortfield'=>'host','with_graphs'=>'1','sortfield'=>'name'))
 	or die('Unable to get hosts: '.print_r(ZabbixAPI::getLastError(),true));
+$hypercx = $hosts;
+
 $host_groups = ZabbixAPI::fetch_array('hostgroup','get', array('output'=>array('groupid','name'),'real_hosts'=>'1','with_graphs'=>'1','sortfield'=>'name') )
 	or die('Unable to get hosts: '.print_r(ZabbixAPI::getLastError(),true));
 ZabbixAPI::logout($z_server,$z_user,$z_pass)
@@ -153,10 +154,8 @@ ZabbixAPI::logout($z_server,$z_user,$z_pass)
 </td><td valign="center" align="left" height="30">
 <p>
 <input id="ReportHost" type="radio" name="ReportType" value="host" title="Generate report on HOST" checked="checked" />Host
-<input id="ReportHostGroup" type="radio" name="ReportType" value="hostgroup" title="Generate report on GROUP" />Host Group
 </p>
 </td><td align="center" valign="top" width="110">
-<center><?php echo $z_user; ?> <a href="logout.php">Logout</a></center>
 </td></tr>
 <tr><td valign="middle" align="left">
 &nbsp;
@@ -164,30 +163,14 @@ ZabbixAPI::logout($z_server,$z_user,$z_pass)
 <p id="p_ReportHost">
 <label for="s_ReportHost" class="error">Please select your host</label>
 &nbsp;<select id="s_ReportHost" name="HostID" width="350"  style="width: 350px" title="Please select host" required>
-<option value="">--&nbsp;Select&nbsp;host&nbsp;--</option>
+<!-- option value="">--Select host--</option -->
 <?php
-ReadArray($hosts);
-?>
-</select>
-</p>
-<p id="p_ReportHostGroup">
-&nbsp;<select id="s_ReportHostGroup" name="GroupID" width="350" style="width: 350px" title="Please select hostgroup" >
-<option value="">--&nbsp;Select&nbsp;hostgroup&nbsp;--</option>
-<?php
-ReadArray($host_groups);
+ReadArray($hypercx);
 ?>
 </select>
 </p>
 <p>
 <input type="checkbox" name="GraphsOn" value="yes" checked> Include graphs</input> &nbsp;
-<!--input type="checkbox" name="ItemGraphsOn" value="yes"> Include graphed items</input> &nbsp;
-<input type="checkbox" name="TriggersOn" value="yes"> Show triggers</input><BR/>
-<input type="checkbox" name="ItemsOn" value="yes"> Show configured items status</input> &nbsp;
-<input type="checkbox" name="TrendsOn" value="yes"> Show configured trends (SLA-ish)</input --!>
-</p>
-<p>
-<!-- input type="string" name="mygraphs2" style="font-size: 10px;"  size=80 value="<?php echo $mygraphs; ?>"> &uarr; Graphs to show (#.*# = all):</input>
-<input type="string" name="myitems2" style="font-size: 10px;"  size=80 value="<?php echo $myitemgraphs; ?>"> &uarr; Items to graph (#.*# = all):</input --!>
 </p>
 </td><td valign="middle">
 &nbsp;
@@ -197,8 +180,6 @@ ReadArray($host_groups);
 </td><td valign="middle" align="left">
 <p>
 <input id="RangeLast" type="radio" name="ReportRange" value="last" title="Report on last activity" checked="checked" />Last
-<!-- input id="RangeCustom" type="radio" name="ReportRange" value="custom" title="Report using custom report range" />Custom --!>
-
 </p>
 </td><td valign="middle">
 &nbsp;
@@ -208,20 +189,11 @@ ReadArray($host_groups);
 </td><td valign="middle" align="left" height="50">
 <p id=p_RangeLast>
 &nbsp;<select id="s_RangeLast" name="timePeriod" title="Please select range" required>
-<option value="Hour">Hour</option>
-<option value="Day">Day</option>
-<option value="Week">Week</option>
 <option value="Month">Month</option>
-<option value="Year">Year</option>
 </select>
 </p>
-<!-- p id="p_RangeCustom">
-&nbsp;<b>Start:</b><input name="startdate" id="datepicker_start" type="date" size="8" />at<input name="starttime" id="timepicker_start" type="time" size="5" />
-<b>End:</b><input name="enddate" id="datepicker_end" type="date" size="8" />at<input name="endtime" id="timepicker_end" type="time" size="5" />
-</p --!>
 </td><td valign="bottom" align="middle">
 <input type='submit' value='Generate'>
-<!-- span class="smalltext"><input type='checkbox' name='debug'>Debug</span --!>
 </td></tr>
 </table>
 </form>
