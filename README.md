@@ -8,6 +8,7 @@ Install project
 ```
 cd /usr/share/zabbix/
 git clone https://github.com/virtalus/zabbix-pdf-report.git
+apt install php-json php-curl
 ```
 
 Create working dir
